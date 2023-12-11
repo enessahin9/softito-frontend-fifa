@@ -152,6 +152,28 @@ bottom: 550px;
     line-height: 24px;
 }
 
+#languageMenu {
+    background: black;
+    width: 80px;
+    list-style: none;
+    border-radius: 3px;
+    z-index: 1;
+    position: absolute;
+    margin-block-start: 10px;
+    right: 86px;
+    font-weight: 300;
+    font-size: 13px;
+}
+
+#languageMenu li {
+    line-height: 1.6;
+    margin-top: 3px;
+    margin-bottom: 3px;
+    padding: 5px 0 5px 10px;
+    border-bottom: 0.2px solid hsla(0, 0%, 100%, .3);
+}
+
+
 /* #shadow {
     
     height: 100%;

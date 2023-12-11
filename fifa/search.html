@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+
+    <script>
+
+        var a = 1;
+        var b = 2;
+        var c = a + b;
+        console.log(c);
+
+        var i;
+        for (i = 0; i < 10; i++) {
+            if (i > 8) {
+                console.log("büyük")
+            }
+            console.log(i);
+        }
+
+        // var d = prompt("Veri girinizi: ");
+        // console.log("Girilen veri: " + d);
+
+        i = "Metin";
+        console.log(d + " " + i);
+
+        i = 1 + 2;
+        console.log(i);
+
+        i = 1 + "2";
+        console.log(i);
+
+        i = "2" + 1;
+        console.log(i);
+
+        i = 1 + 2 + "3" + 1;
+        console.log(i);
+
+        i = 5 - "3";
+        console.log(i);
+
+        i = "3" - 5;
+        console.log(i);
+
+        i = 5 - "a";
+        console.log(i);
+
+
+
+        function inputChange() {
+            // 1. accesss title
+            // 2. reverse title
+            // 3. update title
+
+            var titleTextButton = document.getElementById("textInput");
+            var titleText = titleTextButton.value;
+
+            var ttArray = titleText.split('');
+            ttArray = ttArray.reverse();
+            titleTextButton.value = ttArray.join('');
+
+        }
+
+        function changeTitle() {
+            // alert("changeTitle");
+            // var titleText = document.title;
+            // alert(titleText);
+
+            var titleTextButton = document.getElementById("titleButton");
+            var titleText = titleTextButton.innerText; // innterText'i titleText'e kopyaladık
+
+            var ttArray = titleText.split('');
+            ttArray = ttArray.reverse();
+            titleTextButton.innerText = ttArray.join('');
+        }
+    </script>
+</head>
+
+<body>
+
+    <button id="titleButton" onclick="inputChange(), changeTitle()">Başlık Değiştir</button>
+    <form>
+        <input id="textInput" type="text" value="patates" onchange="inputChange()"/>
+        <!-- on komutu click, change vs tüm event'leri gösterir -->
+        <!-- onchange komutu obje terk edildiği zaman çalışan bir komut -->
+    </form>
+
+</body>
+
+</html>
