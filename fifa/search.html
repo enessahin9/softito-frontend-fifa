@@ -24,47 +24,60 @@
         // var d = prompt("Veri girinizi: ");
         // console.log("Girilen veri: " + d);
 
-        i = "Metin";
-        console.log(d + " " + i);
+        // i = "Metin";
+        // console.log(d + " " + i);
 
-        i = 1 + 2;
-        console.log(i);
+        // i = 1 + 2;
+        // console.log(i);
 
-        i = 1 + "2";
-        console.log(i);
+        // i = 1 + "2";
+        // console.log(i);
 
-        i = "2" + 1;
-        console.log(i);
+        // i = "2" + 1;
+        // console.log(i);
 
-        i = 1 + 2 + "3" + 1;
-        console.log(i);
+        // i = 1 + 2 + "3" + 1;
+        // console.log(i);
 
-        i = 5 - "3";
-        console.log(i);
+        // i = 5 - "3";
+        // console.log(i);
 
-        i = "3" - 5;
-        console.log(i);
+        // i = "3" - 5;
+        // console.log(i);
 
-        i = 5 - "a";
-        console.log(i);
+        // i = 5 - "a";
+        // console.log(i);
 
 
 
-        function inputChange() {
-            // 1. accesss title
-            // 2. reverse title
-            // 3. update title
+        // function inputChange() {
+        //     // 1. accesss title
+        //     // 2. reverse title
+        //     // 3. update title
 
-            var titleTextButton = document.getElementById("textInput");
-            var titleText = titleTextButton.value;
+        //     var titleTextButton = document.getElementById("textInput");
+        //     var titleText = titleTextButton.value;
 
+        //     var ttArray = titleText.split('');
+        //     ttArray = ttArray.reverse();
+        //     titleTextButton.value = ttArray.join('');
+
+        // }
+
+
+        function InputChange(titleText) {
+            var entryInput = document.getElementById("entry");
             var ttArray = titleText.split('');
-            ttArray = ttArray.reverse();
-            titleTextButton.value = ttArray.join('');
 
+            ttArray = ttArray.reverse();
+            entryInput.value = ttArray.join('');
+
+            if (titleText == "domates") {
+                clickButton.click();
+            }
         }
 
-        function changeTitle() {
+        function ChangeTitle() {
             // alert("changeTitle");
             // var titleText = document.title;
             // alert(titleText);
@@ -75,19 +88,110 @@
             var ttArray = titleText.split('');
             ttArray = ttArray.reverse();
             titleTextButton.innerText = ttArray.join('');
+            Stop();
+
+         
         }
+
+        function Stop(e) {
+            var entryInput = document.getElementById("entry");
+
+            if (entryInput.value == "pata") {
+                e.preventDefault();
+            }
+
+            // submit.value = "OK";
+
+        }
+
+        function AddButton(orgButton) {
+            var dugme = document.createElement("button");
+            dugme.textContent = "GELDI";
+            document.body.append(dugme);
+            const tablo = document.getElementById("tablo");
+            const satir = document.createElement("tr");
+            tablo.append(satir);
+            satir.append(dugme);
+            const btn = document.querySelector('#titleButton')
+            // btn.removeAttribute('onclick')
+            dugme.setAttribute("onclick", "AddButton(this)");
+            // document.body.appendChild(button);
+            orgButton.remove();
+
+        }
+
+        function SelectChanged() {
+            let patates = document.getElementById("patato");
+
+            patates.value = "domates"
+            patates.oninput();
+        }
+
+        function ColorChanged(color) {
+            let patates = document.getElementById("patato");
+
+            patates.style.color = color;
+        }
+
     </script>
 </head>
 
 <body>
 
-    <button id="titleButton" onclick="inputChange(), changeTitle()">Başlık Değiştir</button>
-    <form>
-        <input id="textInput" type="text" value="patates" onchange="inputChange()"/>
+    <button id="dugme" onclick="AddButton(this)">Düğme Ekle</button>
+    <form onsubmit="Stop(event)">
+        <input id="patato" type="text" value="patates" oninput="InputChange(this.value)" required maxlength="11"
+            min="11" />
+        <input type="text" id="entry" />
+        <input type="submit" value="TAMAM" id="submitButton">
+        <input type="reset" value="İPTAL">
+
+        <br>
+        <label>TC Vatandaşıyım</label>
+        <input type="checkbox" checked>
+
+        <textarea>Adres</textarea>
+
+        <select onchange="SelectChanged()">
+            <option>abc</option>
+            <option>def</option>
+        </select>
+
+        <input type="tel">
+        <input type="email">
+        <input type="password">
+        <input type="date">
+        <input type="file">
+        <input type="hidden" value="gizli">
+        <input type="number">
+        <br>
+        <input type="radio" name="abc">
+        <input type="radio" name="abc">
+        <br>
+        <input type="radio" name="def">
+        <input type="radio" name="def">
+        <br>
+        <input type="color" oninput="ColorChanged(this.value)">
+
+        <!-- onkeyup="inputChange(this.value)" -->
         <!-- on komutu click, change vs tüm event'leri gösterir -->
         <!-- onchange komutu obje terk edildiği zaman çalışan bir komut -->
     </form>
 
+    <table>
+        <thead>
+            <tr>
+                <th>Tarih</th>
+                <th>Miktar</th>
+                <th>Fiyat</th>
+            </tr>
+        </thead>
+
+        <tbody id="tablo"></tbody>
+    </table>
+
 </body>
+
+<!-- ÖDEV: -->
 
 </html>
